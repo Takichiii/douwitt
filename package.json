@@ -1,0 +1,14 @@
+{
+  "name": "douwitt-app",
+  "version": "1.0.0",
+  "description": "Application de productivité (Taches, Projets,...)",
+  "main": "index.js",
+  "scripts": {
+    "client:dev": "cd ./client && npm run dev",
+    "server:dev": "cd ../server && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
