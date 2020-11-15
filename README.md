@@ -3,18 +3,22 @@
 ###	Description :
 A nice productivity app available cross-platforms
 
+<p align="center">
+  <img alt="Douwitt in action" src="/douwitt.png">
+</p>
+
 ###	Technologies :
 - Serveur : API REST Express Node.js, 
 - Interface : Javascript (Librairie [VueJS](https://vuejs.org/)), HTML CSS (Framework [Quasar](https://quasar.dev/))), Axios (API client side)
 
 ## Project Setup
-**Start client application:**
+**Dev client application:**
 ```
-npm run client:start
+npm run client:dev
 ```
-**Start Server application:**
+**Dev Server application:**
 ```
-npm run server:start
+npm run server:dev
 ```
 
 ##	Rubriques : 
