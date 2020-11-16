@@ -50,7 +50,7 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Inbox',
+    title: 'Boîte de réception',
     icon: 'all_inbox',
     link : '/inbox'
   },

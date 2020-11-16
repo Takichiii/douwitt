@@ -1,5 +1,5 @@
 <template>
-<div style="padding: 0px 0px 0px 30px;">
+<div>
   <div v-if="title !== 'Projects'">
     <q-item
       clickable

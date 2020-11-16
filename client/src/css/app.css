@@ -5,12 +5,25 @@ body {
     color: var(--q-color-dark);
 }
 
+.q-item {
+    min-height: 46px;
+    color: inherit;
+    transition: color .3s, background-color .3s;
+    padding: 0px 0px 0px 30px;
+}
+
 .q-item.q-router-link--active, .q-item--active {
     color: var(--q-color-warning);
     font-weight: bold;
     font-size: larger;
+    background-color: snow;
+    padding: 0px 0px 0px 35px;
 }
 
 .q-avatar__content, .q-avatar img:not(.q-icon) {
     width: auto;
+}
+
+.q-field--standout.q-field--dark .q-field__control {
+    background: #646464;
 }
