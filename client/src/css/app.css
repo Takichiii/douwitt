@@ -9,13 +9,20 @@ body {
     min-height: 46px;
     color: inherit;
     transition: color .3s, background-color .3s;
-    padding: 0px 0px 0px 30px;
+    padding: 0px 0px 0px 31px;
+    font-size: 14px;
+}
+
+.q-item__label--header {
+    padding: 15px;
+    font-size: .875rem;
+    letter-spacing: .01786em;
 }
 
 .q-item.q-router-link--active, .q-item--active {
     color: var(--q-color-warning);
     font-weight: bold;
-    font-size: larger;
+    font-size: 15px;
     background-color: snow;
     padding: 0px 0px 0px 35px;
 }
@@ -26,4 +33,25 @@ body {
 
 .q-field--standout.q-field--dark .q-field__control {
     background: #646464;
+}
+
+.q-field--standout.q-field--dark .q-field__control:hover {
+    background-color: white;
+    color: black;
+}
+.q-field--standout.q-field--dark .q-field__control:hover i {
+    color: #646464;;
+}
+
+.q-field--standout.q-field--dark .q-field__control i:hover {
+    color:black;;
+}
+
+.q-field--standout.q-field--dark .q-field__control :hover ::placeholder {
+    color: black;
+}
+
+.q-item__section--avatar {
+    color: inherit;
+    min-width: 0px;
 }

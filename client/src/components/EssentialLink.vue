@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div v-if="title !== 'Projects'">
+  <div v-if="link !== undefined">
     <q-item
       clickable
       exact
@@ -18,19 +18,18 @@
 
   <div v-else>
     <q-expansion-item
-    expand-icon-class
-    expand-separator
-    :icon="icon"
     :label="title"
-    default-closed
+    default-opened
+    expand-separator
+    switch-toggle-side
     >
     
-    <div v-for="project in projects" :key="project.name" v-bind="project">
+    <div v-for="(project, projectId) in projects" :key=projectId v-bind="project">
       <q-item
         clickable
         exact
         tag="a"
-        :to="'/project/' + project.id">
+        :to="'/projects/' + projectId">
         <q-item-section avatar>
           <q-icon/>
         </q-item-section>
@@ -57,12 +56,13 @@ export default {
   name: 'EssentialLink',
   data () {
     return {
-      projects: {},
+      projects: [],
     }
   },
   mounted () {
     this.getProjects();
   },
+  
   methods: {
     getProjects() {
       axios
@@ -70,7 +70,7 @@ export default {
         .then(response => {
           delete response.data[0]; //remove the first element of projects which is inbox
           this.projects = response.data
-        })
+        });
     }
   },
   props: {
@@ -79,8 +79,7 @@ export default {
       required: true
     },
     link: {
-      type: String,
-      //default: '#'
+      type: String
     },
 
     icon: {
@@ -89,15 +88,11 @@ export default {
     }
   }
 }
-  /*
-  watch: {
-    projects: {
-      immediate: true,// fetch the data when the view is created and the data is already being observed
-      handler(id) {
-        this.getProjects();// call again the method if the route changes
-      },
-    }
-  },
-  */
 </script>
+
+<style scoped>
+.q-expansion-item {
+  order : 1;
+}
+</style>
 

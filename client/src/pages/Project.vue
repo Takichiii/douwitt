@@ -15,7 +15,6 @@
 <script>
 import axios from 'axios';
 const baseURL = "http://localhost:8081/";
-const baseURLClient = "http://localhost:8080/";
 
 export default {
   components : {
@@ -49,16 +48,19 @@ export default {
     getProjectTasks(id) {
       if (id == undefined) { //inbox
         axios
-        .get(`${baseURL}projects${id}/tasks`)
+        .get(`${baseURL}projects/0/tasks`)
         .then(response => (this.tasks = response.data))
       } else {
         axios
-          .get(`${baseURL}projects${id}/tasks`)
+          .get(`${baseURL}projects/${id}/tasks`)
           .then(response => (this.tasks = response.data))
       }
     },
     async addTask() {
-      const response = await axios.post(`${baseURL}project/${this.id}/task`, { name: this.taskName , isDone : false})
+      const response = await axios.post(
+        `${baseURL}tasks/${this.id}`, 
+        JSON.stringify({ "name": this.taskName , "isDone" : false})
+        )
       console.log(response.data);
       this.tasks = [...this.tasks, response.data]
       this.taskName = ''

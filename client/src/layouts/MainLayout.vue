@@ -15,7 +15,8 @@
           <q-avatar  >
             <img src="..\assets\douwitt.png">
           </q-avatar>
-           &nbspdouwitt
+           <span id="name-app">&nbspdouwitt</span>  
+           <span id="version"> v{{ $q.version }}</span>
         </q-toolbar-title>
         
         <q-btn flat round dense icon="info_outline" class="q-pa-sm" to="/about"/>
@@ -65,8 +66,8 @@ const linksData = [
     link : '/week'
   },
   {
-    title: 'Projects',
-    icon: 'assignment',
+    title: 'Projets',
+    //icon: 'assignment',
   }
 ];
 const text = "";
@@ -83,3 +84,14 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+#version {
+    font-size: 8px;
+    position:absolute;
+}
+
+#name-app {
+    position:relative;
+}
+</style>

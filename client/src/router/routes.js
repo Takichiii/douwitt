@@ -11,12 +11,11 @@ const routes = [
         alias: '/inbox' 
       },
       {
-        //home leads to inbox, which is a project
         path: '/inbox',  
         component: Project, 
       },
       {
-        path: '/project/:id', 
+        path: '/projects/:id', 
         component: Project, 
         props: true 
       },

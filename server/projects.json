@@ -19,10 +19,6 @@
       },
       {
         "name": "Test post task into inbox ",
-        "isDone": false
-      },
-      {
-        "name": "Test post task into inbox ",
         "isDone": false,
         "taskId": "45b0f7b0-2798-11eb-b9c8-2fdd0656591b"
       },
@@ -76,10 +72,10 @@
   },
   "3": {
     "name": "New test project - new modification",
-    "tasks" : []
+    "tasks": []
   },
   "5": {
     "name": "Test post new project ",
-    "tasks" : []
+    "tasks": []
   }
 }

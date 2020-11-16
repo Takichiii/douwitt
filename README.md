@@ -50,7 +50,7 @@ npm run server:dev
 
 ##	Découpage User Story (Front): 
   - [X] En tant que user, je veux voir ma liste de projets.
-  - [ ] En tant que user, je veux voir la liste des tâches d'un projet.
+  - [X] En tant que user, je veux voir la liste des tâches d'un projet.
   - [ ]	En tant que user, je veux créer un projet.
   - [ ]	En tant que user, je veux ajouter une tâche à mon inbox.
   - [ ]	En tant que user, je veux ajouter une tâche à un projet spécifique.
