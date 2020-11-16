@@ -2,17 +2,23 @@
   <q-layout view="hHr LpR fFf"> 
     <q-header >
       <q-toolbar>
-        <q-btn flat round dense icon="menu" @click="leftDrawerOpen = !leftDrawerOpen" class="q-ml-md q-pa-sm"/>
+        <q-btn flat round dense icon="menu" @click="leftDrawerOpen = !leftDrawerOpen" class=""/>
         <q-btn flat round dense icon="home" to="/"/>
         <q-input dark dense standout v-model="text" placeholder="Rechercher" input-class="text-left" class="q-pa-sm">
           <template v-slot:append>
             <q-icon v-if="text === ''" name="clear" />
             <q-icon v-else name="search" class="cursor-pointer" @click="text = ''" />
-          </template>
+          </template> 
         </q-input>
         <q-space />
-        <q-btn flat round dense icon="info_outline" class="q-pa-sm" to="/about"/>
+         <q-toolbar-title to="/" style="flex: none;">
+          <q-avatar  >
+            <img src="..\assets\douwitt.png">
+          </q-avatar>
+           &nbspdouwitt
+        </q-toolbar-title>
         
+        <q-btn flat round dense icon="info_outline" class="q-pa-sm" to="/about"/>
       </q-toolbar>
     </q-header>
 

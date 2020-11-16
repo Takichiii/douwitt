@@ -57,7 +57,7 @@ export default {
   name: 'EssentialLink',
   data () {
     return {
-      projects: [],
+      projects: {},
     }
   },
   mounted () {
@@ -66,9 +66,11 @@ export default {
   methods: {
     getProjects() {
       axios
-        .get(baseURL)
-        //slice the first element of projects which is inbox
-        .then(response => (this.projects = response.data.projects.slice(1)))
+        .get(baseURL + 'projects')
+        .then(response => {
+          delete response.data[0]; //remove the first element of projects which is inbox
+          this.projects = response.data
+        })
     }
   },
   props: {
@@ -87,4 +89,15 @@ export default {
     }
   }
 }
+  /*
+  watch: {
+    projects: {
+      immediate: true,// fetch the data when the view is created and the data is already being observed
+      handler(id) {
+        this.getProjects();// call again the method if the route changes
+      },
+    }
+  },
+  */
 </script>
+

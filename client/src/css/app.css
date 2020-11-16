@@ -2,4 +2,15 @@
 
 body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    color: var(--q-color-dark);
+}
+
+.q-item.q-router-link--active, .q-item--active {
+    color: var(--q-color-warning);
+    font-weight: bold;
+    font-size: larger;
+}
+
+.q-avatar__content, .q-avatar img:not(.q-icon) {
+    width: auto;
 }

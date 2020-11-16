@@ -47,14 +47,14 @@ export default {
   },
   methods: {
     getProjectTasks(id) {
-      if (id == undefined) {
+      if (id == undefined) { //inbox
         axios
-        .get(baseURL + 'inbox')
-        .then(response => (this.tasks = response.data.tasks))
+        .get(`${baseURL}projects${id}/tasks`)
+        .then(response => (this.tasks = response.data))
       } else {
         axios
-          .get(baseURL + 'project/' + id)
-          .then(response => (this.tasks = response.data.tasks))
+          .get(`${baseURL}projects${id}/tasks`)
+          .then(response => (this.tasks = response.data))
       }
     },
     async addTask() {
