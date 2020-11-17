@@ -25,6 +25,15 @@ const projectRoutes = (app, fs) => {
         });
     };
 
+    function replacer(i, val) {
+        if ( val === null ) 
+        { 
+           return undefined; // change null to empty string
+        } else {
+           return val; // return unchanged
+        }
+       };   
+
     // READ ALL PROJECTS
     app.get('/projects', (req, res) => {
         fs.readFile(dataPath, 'utf8', (err, data) => {
@@ -63,17 +72,17 @@ const projectRoutes = (app, fs) => {
             res.send(JSON.parse(data)[projectId]["tasks"]);
         });
     });
-
+ 
     // CREATE NEW PROJECT
     app.post('/projects', (req, res) => {
-
+        res.setHeader('Content-Type', 'application/json');
         readFile(data => {
             const newProjectId = Object.keys(data).length + 1;
 
             // add the new project
             data[newProjectId.toString()] = req.body;
             
-            writeFile(JSON.stringify(data, this.replacer, 2), () => {
+            writeFile(JSON.stringify(data, replacer, 3), () => {
                 res.status(200).send('new project added');
             });
         },
@@ -83,38 +92,30 @@ const projectRoutes = (app, fs) => {
 
     // UPDATE PROJECT
     app.put('/projects/:id', (req, res) => {
-
+        res.setHeader('Content-Type', 'application/json');
         readFile(data => {
 
             // add the new project
             const projectId = req.params["id"];
             data[projectId] = req.body;
 
-            writeFile(JSON.stringify(data, this.replacer, 2), () => {
+            writeFile(JSON.stringify(data, replacer, 3), () => {
                 res.status(200).send(`projects id:${projectId} updated`);
             });
         },
             true);
     });
 
-    function replacer(i, val) {
-        if ( val === null ) 
-        { 
-           return ""; // change null to empty string
-        } else {
-           return val; // return unchanged
-        }
-       }
     // DELETE PROJECT
     app.delete('/projects/:id', (req, res) => {
-
+        res.setHeader('Content-Type', 'application/json');
         readFile(data => {
 
             // add the new project
             const projectId = req.params["id"];
             delete data[projectId];
 
-            writeFile(JSON.stringify(data, this.replacer, 2), () => {
+            writeFile(JSON.stringify(data, replacer, 3), () => {
                 res.status(200).send(`projects id:${projectId} removed`);
             });
         },
@@ -142,7 +143,7 @@ const projectRoutes = (app, fs) => {
 
     // ADD NEW task- if @projectId not specified, add to inbox
     app.post('/tasks/:projectId', (req, res) => {
-
+        res.setHeader('Content-Type', 'application/json');
         readFile(data => {
             console.dir('HEERE'+req.body);
             let projectId = req.params["projectId"];
@@ -154,6 +155,10 @@ const projectRoutes = (app, fs) => {
             projectId = parseInt(projectId, 10);
             
             let obj = data[projectId]["tasks"];
+            if (obj == null){
+                console.log('TRIGGER ')
+                return;
+            }
             const l = obj.length;
             if (l == 0) {
                 obj = []
@@ -163,7 +168,7 @@ const projectRoutes = (app, fs) => {
             obj[l]["taskId"] = taskId;
             //data[projectId]["tasks"][l]["createdAt"] = 0;
             
-            writeFile(JSON.stringify(data, this.replacer, 2), () => {
+            writeFile(JSON.stringify(data, replacer, 3), () => {
                 res.status(200).send(`new task added id:${taskId}`);
             });
         },
@@ -183,7 +188,7 @@ const projectRoutes = (app, fs) => {
 
     // DELETE task from a specific project
     app.delete('/tasks/:projectId/:taskId', (req, res) => {
-        console.log('HEEEEEEEEEEEEEEEEEEEEEEY')
+        res.setHeader('Content-Type', 'application/json');
         readFile(data => {
             let message = '';
             const taskId = req.params["taskId"];
@@ -197,7 +202,7 @@ const projectRoutes = (app, fs) => {
                 message = `tasks id:${taskId} removed from project ${projectId}`;
             }
 
-            writeFile(JSON.stringify(data, this.replacer, 2), () => {
+            writeFile(JSON.stringify(data, replacer, 3), () => {
                 res.status(200).send(message);
             });
         },
@@ -206,7 +211,7 @@ const projectRoutes = (app, fs) => {
 
     // UPDATE task
     app.put('/tasks/:projectId/:taskId', (req, res) => {
-
+        res.setHeader('Content-Type', 'application/json');
         readFile(data => {
             const taskId = req.params["taskId"];
             const projectId = req.params["projectId"];
@@ -227,7 +232,7 @@ const projectRoutes = (app, fs) => {
                     delete data[projectId]["tasks"][taskIndexInProject];
                 }
             }
-            writeFile(JSON.stringify(data, this.replacer, 2), () => {
+            writeFile(JSON.stringify(data, replacer, 3), () => {
                 res.status(200).send(message);
             });
         },

@@ -1,92 +1,78 @@
 {
-  "0": {
-    "name": "Inbox",
-    "tasks": [
-      {
-        "taskId": 11,
-        "name": "Faire les courses",
-        "isDone": false
-      },
-      {
-        "taskId": 12,
-        "name": "Aller à la salle",
-        "isDone": false
-      },
-      {
-        "taskId": 13,
-        "name": "Promener chien",
-        "isDone": false
-      },
-      {
-        "name": "lalala",
-        "isDone": false,
-        "taskId": "b34f4420-2860-11eb-bbc8-63c107f54e8d"
-      }
-    ]
-  },
-  "1": {
-    "name": "Apprendre VueJS",
-    "tasks": [
-      {
-        "taskId": 21,
-        "name": "Lire doc Vue2/Vue3",
-        "isDone": false
-      },
-      {
-        "taskId": 22,
-        "name": "Complete beginner path ",
-        "isDone": false
-      },
-      {
-        "taskId": 23,
-        "name": "Complete intermediate path",
-        "isDone": false
-      },
-      {
-        "name": "Test post task into inbox ",
-        "isDone": false,
-        "taskId": "d3572cb0-2798-11eb-80f7-b9e5447c1d4f"
-      },
-      {
-        "name": "cool task",
-        "isDone": false,
-        "taskId": "b6fa98e0-2860-11eb-8cc5-2363f4c936f6"
-      }
-    ]
-  },
-  "2": {
-    "name": "Recherche d'appartement",
-    "tasks": [
-      {
-        "taskId": 21,
-        "name": "Préparer un dossier",
-        "isDone": false
-      },
-      {
-        "taskId": 22,
-        "project_Id": "3",
-        "name": "Appeler Century21",
-        "isDone": "false"
-      },
-      {
-        "name": "cool task",
-        "isDone": false,
-        "taskId": "a65fcdc0-2860-11eb-8b76-bd370c4e937b"
-      }
-    ]
-  },
-  "3": {
-    "name": "New test project - new modification",
-    "tasks": []
-  },
-  "5": {
-    "name": "Test post new project ",
-    "tasks": [
-      {
-        "name": "cool task2",
-        "isDone": false,
-        "taskId": "43517b70-286a-11eb-a9c4-c50bfe0bcf1e"
-      }
-    ]
-  }
+   "0": {
+      "name": "Inbox",
+      "tasks": [
+         {
+            "taskId": 11,
+            "name": "Faire les courses",
+            "isDone": false
+         },
+         {
+            "taskId": 12,
+            "name": "Aller à la salle",
+            "isDone": false
+         },
+         {
+            "taskId": 13,
+            "name": "Promener chien",
+            "isDone": false
+         }
+      ]
+   },
+   "1": {
+      "name": "Apprendre VueJS",
+      "tasks": [
+         {
+            "taskId": 21,
+            "name": "Lire doc Vue2/Vue3",
+            "isDone": false
+         },
+         {
+            "taskId": 22,
+            "name": "Complete beginner path ",
+            "isDone": false
+         },
+         {
+            "taskId": 23,
+            "name": "Complete intermediate path",
+            "isDone": false
+         }
+      ]
+   },
+   "2": {
+      "name": "Recherche d'appartement",
+      "tasks": [
+         {
+            "taskId": 21,
+            "name": "Préparer un dossier",
+            "isDone": false
+         },
+         {
+            "taskId": 22,
+            "project_Id": "3",
+            "name": "Appeler Century21",
+            "isDone": "false"
+         }
+      ]
+   },
+   "3": {
+      "name": "Meditation",
+      "tasks": [
+         {
+            "name": "Trying Headspace app for 1 week",
+            "isDone": false,
+            "taskId": "43517b70-286a-11eb-a9c4-c50bfe0bcf1d"
+         }
+      ]
+   },
+   "5": {
+      "name": "Digital Declutter",
+      "tasks": [
+         {
+            "name": "Getting rid of all unecessary items",
+            "isDone": false,
+            "taskId": "43517b70-286a-11eb-a9c4-c50bfe0bcf1e"
+         }
+      ]
+   }
 }

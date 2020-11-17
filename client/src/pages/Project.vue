@@ -42,13 +42,16 @@ export default {
     id: {
       immediate: true,// fetch the data when the view is created and the data is already being observed
       handler(id) {
-      if (this.$route.fullPath == '/inbox'|| this.$route.path == "/")
+      if (this.$route.fullPath == '/inbox')
         id = 0
       this.getProjectTasks(id);// call again the method if the route changes
       }
-    }
+    },
   },
   methods: {
+    onSubmit () {
+      this.getProjectTasks(this.id);
+    },
     async deleteTodo(taskId) {
         console.log("worked "+ taskId);
         try {
