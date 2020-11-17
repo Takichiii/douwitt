@@ -50,18 +50,18 @@ npm run server:dev
 
 ##	Découpage User Story (Front): 
   - [X] En tant que user, je veux voir ma liste de projets.
-  - [X] En tant que user, je veux voir la liste des tâches d'un projet.
+  - [X] En tant que user, je veux voir ma liste de tâches pour chaque projet.
   - [ ]	En tant que user, je veux créer un projet.
-  - [ ]	En tant que user, je veux ajouter une tâche à mon inbox.
-  - [ ]	En tant que user, je veux ajouter une tâche à un projet spécifique.
-  - [ ]	En tant que user, je veux voir ma liste de tâches pour chaque projet.
+  - [X]	En tant que user, je veux ajouter une tâche à mon inbox.
+  - [X]	En tant que user, je veux ajouter une tâche à un projet spécifique.
+  - [X]	En tant que user, je veux voir ma liste de tâches pour chaque projet.
+  - [X]	En tant que user, je veux supprimer une tâche d'un projet.
+  - [ ]	En tant que user, je veux terminer(cocher) une tâche.
+  - [ ]	En tant que user, je veux décocher une tâche terminée.
   - [ ]	En tant que user, je veux définir une date et heure d'échéance à ma tâche.
   - [ ]	En tant que user, je veux changer la date et heure d'échéance de ma tâche.
   - [ ]	En tant que user, je veux définir une priorité à une tâche.
   - [ ]	En tant que user, je veux changer la priorité d'une tâche.
-  - [ ]	En tant que user, je veux terminer(cocher) une tâche.
-  - [ ]	En tant que user, je veux décocher une tâche terminée.
-  - [ ]	En tant que user, je veux supprimer une tâche d'un projet.
   - [ ] En tant que user, je veux voir la liste des tâches en retard.
   - [ ] En tant que user, je veux voir la liste des tâches que j'ai à faire aujourd'hui.
   - [ ] (optionnel) En tant que user, je veux voir la liste de tâches que j'ai à faire chaque jour de la semaine.

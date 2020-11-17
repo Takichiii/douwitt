@@ -18,14 +18,9 @@
         "isDone": false
       },
       {
-        "name": "Test post task into inbox ",
+        "name": "lalala",
         "isDone": false,
-        "taskId": "45b0f7b0-2798-11eb-b9c8-2fdd0656591b"
-      },
-      {
-        "name": "Test post task into inbox ",
-        "isDone": false,
-        "taskId": "6254f7e0-2798-11eb-a75c-591b8e024315"
+        "taskId": "b34f4420-2860-11eb-bbc8-63c107f54e8d"
       }
     ]
   },
@@ -51,6 +46,11 @@
         "name": "Test post task into inbox ",
         "isDone": false,
         "taskId": "d3572cb0-2798-11eb-80f7-b9e5447c1d4f"
+      },
+      {
+        "name": "cool task",
+        "isDone": false,
+        "taskId": "b6fa98e0-2860-11eb-8cc5-2363f4c936f6"
       }
     ]
   },
@@ -67,6 +67,11 @@
         "project_Id": "3",
         "name": "Appeler Century21",
         "isDone": "false"
+      },
+      {
+        "name": "cool task",
+        "isDone": false,
+        "taskId": "a65fcdc0-2860-11eb-8b76-bd370c4e937b"
       }
     ]
   },
@@ -76,6 +81,12 @@
   },
   "5": {
     "name": "Test post new project ",
-    "tasks": []
+    "tasks": [
+      {
+        "name": "cool task2",
+        "isDone": false,
+        "taskId": "43517b70-286a-11eb-a9c4-c50bfe0bcf1e"
+      }
+    ]
   }
 }

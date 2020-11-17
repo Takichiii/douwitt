@@ -12,18 +12,15 @@ const projectRoutes = (app, fs) => {
             if (err) {
                 throw err;
             }
-
             callback(returnJson ? JSON.parse(data) : data);
         });
     };
 
     const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') => {
-
         fs.writeFile(filePath, fileData, encoding, (err) => {
             if (err) {
                 throw err;
             }
-
             callback();
         });
     };
@@ -76,7 +73,7 @@ const projectRoutes = (app, fs) => {
             // add the new project
             data[newProjectId.toString()] = req.body;
             
-            writeFile(JSON.stringify(data, null, 2), () => {
+            writeFile(JSON.stringify(data, this.replacer, 2), () => {
                 res.status(200).send('new project added');
             });
         },
@@ -93,13 +90,21 @@ const projectRoutes = (app, fs) => {
             const projectId = req.params["id"];
             data[projectId] = req.body;
 
-            writeFile(JSON.stringify(data, null, 2), () => {
+            writeFile(JSON.stringify(data, this.replacer, 2), () => {
                 res.status(200).send(`projects id:${projectId} updated`);
             });
         },
             true);
     });
 
+    function replacer(i, val) {
+        if ( val === null ) 
+        { 
+           return ""; // change null to empty string
+        } else {
+           return val; // return unchanged
+        }
+       }
     // DELETE PROJECT
     app.delete('/projects/:id', (req, res) => {
 
@@ -109,7 +114,7 @@ const projectRoutes = (app, fs) => {
             const projectId = req.params["id"];
             delete data[projectId];
 
-            writeFile(JSON.stringify(data, null, 2), () => {
+            writeFile(JSON.stringify(data, this.replacer, 2), () => {
                 res.status(200).send(`projects id:${projectId} removed`);
             });
         },
@@ -139,24 +144,26 @@ const projectRoutes = (app, fs) => {
     app.post('/tasks/:projectId', (req, res) => {
 
         readFile(data => {
-            
+            console.dir('HEERE'+req.body);
             let projectId = req.params["projectId"];
             const taskId = uuidv1();
 
-            if (projectId == undefined) {
+            if (projectId === undefined) {
                 projectId = 0;
             }
+            projectId = parseInt(projectId, 10);
             
-            const l = data[projectId]["tasks"].length;
+            let obj = data[projectId]["tasks"];
+            const l = obj.length;
             if (l == 0) {
-                data["0"]["tasks"] = []
+                obj = []
             }
-            data[projectId]["tasks"].push(req.body);
-            data[projectId]["tasks"][l]["isDone"] = false;
-            data[projectId]["tasks"][l]["taskId"] = taskId;
+            obj.push(req.body);
+            obj[l]["isDone"] = false;
+            obj[l]["taskId"] = taskId;
             //data[projectId]["tasks"][l]["createdAt"] = 0;
             
-            writeFile(JSON.stringify(data, null, 2), () => {
+            writeFile(JSON.stringify(data, this.replacer, 2), () => {
                 res.status(200).send(`new task added id:${taskId}`);
             });
         },
@@ -176,7 +183,7 @@ const projectRoutes = (app, fs) => {
 
     // DELETE task from a specific project
     app.delete('/tasks/:projectId/:taskId', (req, res) => {
-
+        console.log('HEEEEEEEEEEEEEEEEEEEEEEY')
         readFile(data => {
             let message = '';
             const taskId = req.params["taskId"];
@@ -184,13 +191,13 @@ const projectRoutes = (app, fs) => {
             const taskIndexInProject = findTaskHelper(data, projectId, taskId);
 
             if (taskIndexInProject == -1) {
-                message = 'not found';
+                message = 'task to be deleted not found';
             } else {
                 delete data[projectId]["tasks"][taskIndexInProject];
                 message = `tasks id:${taskId} removed from project ${projectId}`;
             }
 
-            writeFile(JSON.stringify(data, null, 2), () => {
+            writeFile(JSON.stringify(data, this.replacer, 2), () => {
                 res.status(200).send(message);
             });
         },
@@ -220,7 +227,7 @@ const projectRoutes = (app, fs) => {
                     delete data[projectId]["tasks"][taskIndexInProject];
                 }
             }
-            writeFile(JSON.stringify(data, null, 2), () => {
+            writeFile(JSON.stringify(data, this.replacer, 2), () => {
                 res.status(200).send(message);
             });
         },

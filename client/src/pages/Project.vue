@@ -2,7 +2,12 @@
   <q-page padding>
   <div class="q-pa-md">
     <q-list bordered>
-      <task v-for="(task,key) in tasks" :key="key" :task="task" :id="key"></task>
+      <task v-for="(task,key) in tasks" 
+      :key="key" 
+      :task="task" 
+      :id="key"
+      @delete="deleteTodo($event)">
+      ></task>
     </q-list>
     <form @submit.prevent="addTask">
         <input type="text" v-model="taskName" name="taskName" placeholder="Ajouter une tâche">
@@ -28,6 +33,8 @@ export default {
   },
   computed: {
     id: function () {
+     if (this.$route.fullPath == '/inbox')
+       return 0;
       return this.$route.params.id;
     }
   },
@@ -35,32 +42,35 @@ export default {
     id: {
       immediate: true,// fetch the data when the view is created and the data is already being observed
       handler(id) {
-        this.getProjectTasks(id);// call again the method if the route changes
-      },
-    },
-    addTask : {
-      handler(id) {
-        this.getProjectTasks(id);// call again the method if the route changes
-      },
-    },
+      if (this.$route.fullPath == '/inbox'|| this.$route.path == "/")
+        id = 0
+      this.getProjectTasks(id);// call again the method if the route changes
+      }
+    }
   },
   methods: {
+    async deleteTodo(taskId) {
+        console.log("worked "+ taskId);
+        try {
+            const response = await axios.delete(`${baseURL}tasks/${this.id}/${taskId}`);
+            console.log(response.data);
+        } catch(e) {
+            console.error(e);
+        };
+    },
     getProjectTasks(id) {
-      if (id == undefined) { //inbox
-        axios
-        .get(`${baseURL}projects/0/tasks`)
-        .then(response => (this.tasks = response.data))
-      } else {
+      console.log('getprojecttasks', id);
         axios
           .get(`${baseURL}projects/${id}/tasks`)
           .then(response => (this.tasks = response.data))
-      }
+          .catch(error => console.log(error.response.data));
     },
     async addTask() {
       const response = await axios.post(
         `${baseURL}tasks/${this.id}`, 
-        JSON.stringify({ "name": this.taskName , "isDone" : false})
-        )
+        { 
+          name: this.taskName
+        })
       console.log(response.data);
       this.tasks = [...this.tasks, response.data]
       this.taskName = ''

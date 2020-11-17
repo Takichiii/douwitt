@@ -22,6 +22,7 @@
     default-opened
     expand-separator
     switch-toggle-side
+    header-style="font-weight: bold;"
     >
     
     <div v-for="(project, projectId) in projects" :key=projectId v-bind="project">
@@ -70,7 +71,8 @@ export default {
         .then(response => {
           delete response.data[0]; //remove the first element of projects which is inbox
           this.projects = response.data
-        });
+        })
+        .catch(error => console.log(error.response.data));
     }
   },
   props: {

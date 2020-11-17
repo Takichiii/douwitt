@@ -6,13 +6,14 @@ const routes = [
     children: [
       {
         //home leads to inbox, which is a project
-        path: '',  
+        path: '/',  
         component: Project, 
         alias: '/inbox' 
       },
       {
         path: '/inbox',  
         component: Project, 
+        alias: '/projects/0' 
       },
       {
         path: '/projects/:id', 
