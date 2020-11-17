@@ -19,7 +19,7 @@
   <div v-else>
     <q-expansion-item
     :label="title"
-    default-opened
+    default-closed
     expand-separator
     switch-toggle-side
     header-style="font-weight: bold;"

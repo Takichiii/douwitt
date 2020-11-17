@@ -179,7 +179,9 @@ const projectRoutes = (app, fs) => {
     const findTaskHelper = (data, projectId, taskId) => {
         const l = data[projectId]["tasks"].length;
         for (var i = 0; i < l; i++){
-            if ( data[projectId]["tasks"][i]["taskId"] == taskId ) {
+            if ( data[projectId]["tasks"][i] == null ) {
+            }
+            else if ( data[projectId]["tasks"][i]["taskId"] == taskId ) {
                 return i;
             }
         }

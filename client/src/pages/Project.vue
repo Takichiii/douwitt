@@ -8,11 +8,11 @@
       :id="key"
       @delete="deleteTodo($event)">
       ></task>
-    </q-list>
-    <form @submit.prevent="addTask">
+    <form class="q-pa-md" @submit.prevent="addTask" autocomplete="off">
         <input type="text" v-model="taskName" name="taskName" placeholder="Ajouter une tâche">
-        <button>New card</button>
+        <button>+</button>
     </form>
+    </q-list>
   </div>
   </q-page>
 </template>
@@ -28,7 +28,8 @@ export default {
   data() {
     return {
       tasks: [],
-      taskName: ''
+      taskName: '',
+      taskUpdated: false
     }
   },
   computed: {
@@ -47,11 +48,13 @@ export default {
       this.getProjectTasks(id);// call again the method if the route changes
       }
     },
+  	tasks: {
+      handler: function (val, oldVal) {
+      },
+      deep: true
+    }
   },
   methods: {
-    onSubmit () {
-      this.getProjectTasks(this.id);
-    },
     async deleteTodo(taskId) {
         console.log("worked "+ taskId);
         try {
@@ -60,6 +63,8 @@ export default {
         } catch(e) {
             console.error(e);
         };
+        //this.taskUpdated = true;
+        this.getProjectTasks(this.id);
     },
     getProjectTasks(id) {
       console.log('getprojecttasks', id);
@@ -77,6 +82,7 @@ export default {
       console.log(response.data);
       this.tasks = [...this.tasks, response.data]
       this.taskName = ''
+      this.getProjectTasks(this.id);
     }
   },
 }

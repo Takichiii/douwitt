@@ -4,7 +4,7 @@
 A nice productivity app available cross-platforms
 
 <p align="center">
-  <img alt="Douwitt in action" src="/douwitt.png">
+  <img alt="Douwitt in action" src="/douwitt.gif">
 </p>
 
 ###	Technologies :
